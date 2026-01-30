@@ -44,10 +44,46 @@ Search Booking.com for hotels with comprehensive filtering. Considers city, date
 - **Direct Website**: [URL]
 ```
 
+### kql
+
+Expert in Kusto Query Language (KQL) for Azure Data Explorer (ADX) and Microsoft Fabric Eventhouse. Write, optimize, troubleshoot, and explain KQL queries for log analysis, data exploration, time-series analysis, and real-time analytics.
+
+**Use when:**
+- "Write a KQL query for [requirement]"
+- "Optimize this KQL query"
+- "Explain this KQL query"
+- "Troubleshoot this KQL error"
+- Working with Azure Data Explorer or Fabric Eventhouse
+
+**Capabilities:**
+- Write queries from natural language requirements
+- Optimize existing queries for 10-100x performance gains
+- Troubleshoot syntax, logic, and performance issues
+- Explain complex queries with clear breakdowns
+- Design comprehensive query strategies
+
+**Coverage:**
+- Complete operator reference (where, extend, summarize, join, union, parse, etc.)
+- All aggregation, string, datetime, and array functions
+- Performance optimization techniques and patterns
+- Time series analysis and anomaly detection
+- Common query patterns and templates
+
+**Example:**
+```kql
+// Find all error traces from a service in last hour
+Traces
+| where Timestamp > ago(1h)
+| where ServiceName == "API"
+| where Level == "Error"
+| summarize Count = count() by bin(Timestamp, 5m)
+| render timechart
+```
+
 ## Installation
 
 ```bash
-npx add-skill saguiitay/skills
+npx npx skills add saguiitay/skills
 ```
 
 ## Usage
