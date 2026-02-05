@@ -9,12 +9,12 @@ description: Enables Claude to search Booking.com for hotels, considering city, 
 This skill guides the agent to search Booking.com for hotels, considering city, dates, price, neighborhoods, and preferred chains (including all brands). It also outputs the hotel's direct website link and integrates family travel preferences.
 
 ## Prerequisites
-1. Check `preferences.md` for:
+1. Get preferences from user:
    - Family composition and ages
    - Mandatory requirements (e.g., fridge, room size)
    - Preferred amenities (pool for kids, free cancellation)
    - Budget guidelines
-2. Check `plan.md` for specific trip dates and locations
+2. Get specific trip dates and locations from user
 
 ## Hotel Chain Brand Mapping
 
@@ -168,15 +168,6 @@ Present results in this structured format:
 **Recommendation**: [Brief note on which option best fits family preferences and why]
 ```
 
-## Family Travel Integration
-
-When searching for the family in `preferences.md`:
-- **Mandatory**: Room with fridge (or kitchenette)
-- **Highly Preferred**: Pool (for Shay), free cancellation
-- **Preferred**: Larger rooms for 3+ night stays, family-friendly area
-- **Budget**: Spend more for comfort on longer stays (~$150-250/night typical)
-- **Room Type**: 2-bedroom suite or adjoining rooms for 4 travelers when available
-
 ## Instructions
 
 ### For Agent Execution:
@@ -208,18 +199,16 @@ When searching for the family in `preferences.md`:
 **User Request**: "Find hotels in Portland for August 2-4"
 
 **Agent Actions**:
-1. Check `plan.md` → Segment 6: Portland, 3 nights
-2. Check `preferences.md` → Family of 4 (2 adults, 2 kids ages 6 & 9)
-3. Search: "site:booking.com Portland Oregon hotel August 2 2026 August 4 2026 4 guests pool fridge"
-4. Filter for: Price $150-250, guest rating 7.5+, fridge/kitchenette, pool preferred
-5. Find direct websites for top 3 options
-6. Present formatted results with family-relevant notes
-7. Recommend best option based on preferences (e.g., "Option 2 offers best value with pool and Pearl District location")
+1. Search: "site:booking.com Portland Oregon hotel February 2 2026 February 5 2026 4 guests pool fridge"
+2. Filter for: Price range, guest rating 7.5+, fridge/kitchenette, pool preferred
+3. Find direct websites for top 3 options
+4. Present formatted results with family-relevant notes
+5. Recommend best option based on preferences (e.g., "Option 2 offers best value with pool and Pearl District location")
 
 ## Tips for Agent Execution
 - Always convert dates to YYYY-MM-DD format for consistency
 - Check if user has flexibility on dates if no good options found
-- Consider hotel location relative to planned activities in `plan.md`
+- Consider hotel location relative to planned activities
 - Note parking availability and costs (important for road trips)
 - Flag breakfast options (family prefers mix of hotel breakfast and local diners)
 - When in doubt about chain brands, search "[Brand Name] part of which hotel chain"
